@@ -7,10 +7,10 @@
 	Social Network Application  
 </h1>
 
-<form action='${pageContext.servletContext.contextPath}/signup'>
+<form action='signup'>
         <input type='submit' value='Signup'/>
 </form>
-<form action='${pageContext.servletContext.contextPath}/signin'>
+<form action='signin'>
         <input type='submit' value='Signin'/>
  </form>
 </body>

@@ -15,6 +15,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
 import java.util.ArrayList;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -41,6 +43,7 @@ public class User{
     @NotBlank(message = "Enter email!")
     @NotNull(message = "Email can't be empty!")
     @Email(message = "Enter valid email!")
+    @Pattern(regexp = "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$", message = " * Your email has incorrect format")
     @Column(nullable = false, unique = true)
     private String email;
 
@@ -86,16 +89,16 @@ public class User{
     }
     
     
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Post> posts = new ArrayList<Post>();
 
     @OneToMany(mappedBy = "user")
     private List<Comment> comments = new ArrayList<Comment>();
 
-    @OneToMany(mappedBy = "sender", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "sender", cascade = CascadeType.ALL)
     private List<Message> sentMessages = new ArrayList<Message>();
 
-    @OneToMany(mappedBy = "receiver", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY ,mappedBy = "receiver", cascade = CascadeType.ALL)
     private List<Message> receivedMessages = new ArrayList<Message>();
 
 	public List<Post> getPosts() {

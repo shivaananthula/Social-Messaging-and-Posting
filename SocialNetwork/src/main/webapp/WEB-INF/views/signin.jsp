@@ -23,11 +23,11 @@
         <form:input path='password' type='password' placeholder='password'/><br>
         <form:errors path='password' cssClass='error'/>
         <p class='error'>${passwordError}</p>
-        <form:input type='hidden' path='email' value='whatever@whatever.com'/>
+        <form:input type='hidden' path='email' value='dummy@gmail.com'/>
         <input type='submit' value='Sign In'/>
     </form:form>
     <br>
-    <form action="${pageContext.servletContext.contextPath}/signup">
+    <form action="signup">
         <input type="submit" value="Sign Up" />
     </form>
 </div>

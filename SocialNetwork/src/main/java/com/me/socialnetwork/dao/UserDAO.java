@@ -54,4 +54,17 @@ public class UserDAO extends DAO {
             throw new SocialNetworkException("Exception while creating user: " + e.getMessage());
         }
 	}
+	
+	public User merge(User user) throws SocialNetworkException {
+		try {
+            begin();
+            getSession().merge(user);
+            commit();
+            return user;
+        } catch (HibernateException e) {
+            rollback();
+            //throw new AdException("Could not create user " + username, e);
+            throw new SocialNetworkException("Exception while creating user: " + e.getMessage());
+        }
+	}
 }

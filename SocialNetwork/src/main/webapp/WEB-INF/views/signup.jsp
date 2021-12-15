@@ -18,7 +18,7 @@
 <br>
 <div class='center'>
     <form:form method='POST' modelAttribute='user'>
-        <form:input path='username' placeholder='your username' /><br><br>
+        <form:input id = "un" path='username' placeholder='your username' />
         <form:input path='email' placeholder='your email' /><br><br>
         <form:input type='password' path='password' placeholder='your password' /><br><br>
         <input type='password' name='confirm' placeholder='confirm password' /><br><br>

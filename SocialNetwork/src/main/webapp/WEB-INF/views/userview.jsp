@@ -12,12 +12,12 @@
     <title>User view</title>
 </head>
 <body>
-<p class='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
-    <a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
+<p class='right'>User:<a href='user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
+    <a href='signout'>Sign out</a>
 <h1 class='center'>Social Network</h1>
 <br>
 <div class='center'>
-    <form action='${pageContext.servletContext.contextPath}/home'>
+    <form action='home'>
         <input type='submit' value='Homepage'/>
     </form>
 </div>
@@ -44,7 +44,7 @@
         <c:forEach items='${usersPosts}' var='post'>
             <tr>
                 <td>${post.created}</td>
-                <td><a href='${pageContext.servletContext.contextPath}/post?id=${post.id}'>${post.text}</a></td>
+                <td><a href='post?id=${post.id}'>${post.text}</a></td>
                 <td>${fn:length(post.comments)}</td>
             </tr>
         </c:forEach>

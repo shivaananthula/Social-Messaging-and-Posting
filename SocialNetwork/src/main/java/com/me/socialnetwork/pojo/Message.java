@@ -25,13 +25,13 @@ public class Message {
     @Column(nullable = false)
     private Timestamp created;
 
-    @Column(nullable = false, columnDefinition = "boolean default true")
+    @Column(nullable = false)
     private boolean unread = true;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(nullable = false)
     @NotBlank(message="Can''t post an empty message!")
     @NotNull(message="Can''t post an empty message!")
-    @Size(max=21845)
+    @Size(max=240)
     private String text;
 
     @ManyToOne

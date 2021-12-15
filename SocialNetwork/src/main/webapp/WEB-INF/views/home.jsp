@@ -9,8 +9,8 @@
     <title>Social Network</title>
 </head>
 <body>
-<p class='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
-    <a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
+<p class='right'>User:<a href='user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
+    <a href='signout'>Sign out</a>
 <h1 class='center'>Social Network</h1>
 <br><br>
 <h3 class='center'>All posts</h3>
@@ -31,8 +31,8 @@
         <c:forEach items='${allPosts}' var='post'>
             <tr>
                 <td>${post.created}</td>
-                <td><a href='${pageContext.servletContext.contextPath}/user?id=${post.user.id}'>${post.user.username}</a></td>
-                <td><a href='${pageContext.servletContext.contextPath}/post?id=${post.id}'>${post.text}</a></td>
+                <td><a href='user?id=${post.user.id}'>${post.user.username}</a></td>
+                <td><a href='post?id=${post.id}'>${post.text}</a></td>
             </tr>
         </c:forEach>
     </table>

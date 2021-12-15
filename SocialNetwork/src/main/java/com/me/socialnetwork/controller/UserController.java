@@ -63,7 +63,7 @@ public class UserController {
             loggedInUser.setUsername(user.getUsername());
             loggedInUser.hashPassword(user.getPassword());
             loggedInUser.setEmail(user.getEmail());
-            userDao.create(loggedInUser);
+            userDao.merge(loggedInUser);
             model.addAttribute("passwordsDontMatch", "Your details have been changed!");
             return "redirect:/user?id=" + loggedInUser.getId();
         }else {

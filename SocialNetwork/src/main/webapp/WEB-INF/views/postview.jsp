@@ -11,12 +11,12 @@
     <title>Post view</title>
 </head>
 <body>
-<p class='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
-    <a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a>
+<p class='right'>User:<a href='user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
+    <a href='signout'>Sign out</a>
 <h1 class='center'>Social Network</h1>
 <br>
 <div class='center'>
-    <form action='${pageContext.servletContext.contextPath}/home'>
+    <form action='home'>
         <input type='submit' value='Homepage'/>
     </form>
 </div>
@@ -32,7 +32,7 @@
         </tr>
         <tr>
             <td>${post.created}</td>
-            <td><a href='${pageContext.servletContext.contextPath}/user?id=${post.user.id}'>${post.user.username}</a></td>
+            <td><a href='user?id=${post.user.id}'>${post.user.username}</a></td>
             <td>${post.text}</td>
         </tr>
     </table>
@@ -48,7 +48,7 @@
         <c:forEach items='${allComments}' var='comment'>
             <tr>
                 <td>${comment.created}</td>
-                <td><a href='${pageContext.servletContext.contextPath}/user?id=${comment.user.id}'>${comment.user.username}</a></td>
+                <td><a href='user?id=${comment.user.id}'>${comment.user.username}</a></td>
                 <td>${comment.text}</td>
             </tr>
         </c:forEach>

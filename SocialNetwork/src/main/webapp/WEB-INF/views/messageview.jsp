@@ -10,14 +10,12 @@
 </head>
 <body>
 <p class='right'>
-    User:<a
-        href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
-    <a href='${pageContext.servletContext.contextPath}/signout'>Sign
-        out</a>
+    User:<a href='user?id=${loggedInUser.id}'>${loggedInUser.username}</a>&nbsp;
+    <a href='signout'>Signout</a>
 <h1 class='center'>Social Network</h1>
 <br>
 <div class='center'>
-    <form action='${pageContext.servletContext.contextPath}/home'>
+    <form action='home'>
         <input type='submit' value='Homepage' />
     </form>
 </div>

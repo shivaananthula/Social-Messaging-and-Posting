@@ -15,7 +15,7 @@ public class MessageDAO extends DAO {
 	public List<Message> getAllMessagesofSender(long id) throws SocialNetworkException{
 		try {
 			begin();
-            Query q = getSession().createQuery("from Message where sender= :id");
+            Query q = getSession().createQuery("from Message m where sender= :id order by m.created DESC");
             q.setLong("id", id);
             List<Message> messages = (List<Message>) q.getResultList();
             commit();
@@ -29,7 +29,7 @@ public class MessageDAO extends DAO {
 	public List<Message> getAllMessagesofReceiver(long id) throws SocialNetworkException{
 		try {
 			begin();
-            Query q = getSession().createQuery("from Message where receiver= :id");
+            Query q = getSession().createQuery("from Message m where receiver= :id order by m.created DESC");
             q.setLong("id", id);
             List<Message> messages = (List<Message>) q.getResultList();
             commit();

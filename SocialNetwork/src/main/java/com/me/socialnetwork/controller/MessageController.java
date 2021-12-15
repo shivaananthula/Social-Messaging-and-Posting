@@ -44,7 +44,7 @@ public class MessageController {
 
     @PostMapping("/message")
     public String sendMessage(@SessionAttribute("loggedInUser") User loggedInUser, @ModelAttribute @Valid Message message, BindingResult result,
-                              @RequestParam long senderId, String text, long receiverId, Model model, UserDAO userDao, MessageDAO messageDao, PostDAO postDao) throws SocialNetworkException {
+                              @RequestParam long senderId, @RequestParam String text,@RequestParam long receiverId, Model model, UserDAO userDao, MessageDAO messageDao, PostDAO postDao) throws SocialNetworkException {
         if(loggedInUser.getUsername()==null) {
             return "redirect:/";
         }

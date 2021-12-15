@@ -31,7 +31,6 @@ public class SigninController {
     @PostMapping("/signin")
     public String signInAction(@ModelAttribute @Valid User user, BindingResult result, Model model, UserDAO userDao)throws SocialNetworkException {
         if(!result.hasErrors()) {
-           // User loggedInUser = userService.findByUsername(user.getUsername());
         	User loggedInUser = userDao.get(user.getUsername());
             if(loggedInUser==null){
                 model.addAttribute("usernameError", "This username does not exist!");

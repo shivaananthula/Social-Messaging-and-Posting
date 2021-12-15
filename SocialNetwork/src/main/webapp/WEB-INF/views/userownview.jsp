@@ -11,8 +11,8 @@
     <title>Your account</title>
 </head>
 <body>
-<p class='right'>User:<a href='${pageContext.servletContext.contextPath}/user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
-    <a href='${pageContext.servletContext.contextPath}/signout'>Sign out</a></p>
+<p class='right'>User:<a href='user?id=${loggedInUser.id}'>${loggedInUser.username}</a>
+    <a href='signout'>Sign out</a></p>
 <div class='row'>
     <div class='column'>
         <h2 class='center'>Received messages</h2>
@@ -27,8 +27,8 @@
                 <c:set var='unread' value='${receivedMessage.unread}'/>
                 <tr>
                     <td style="font-weight: ${unread ? 'bold' : 'normal' }">${receivedMessage.created}</td>
-                    <td style="font-weight: ${unread ? 'bold' : 'normal' }">${receivedMessage.sender.username}</td>
-                    <td style="font-weight: ${unread ? 'bold' : 'normal' }"><a href='${pageContext.servletContext.contextPath}/message?id=${receivedMessage.id}'>${fn:substring(message,0,26)}
+                    <td style="font-weight: ${unread ? 'bold' : 'normal' }"><a href='user?id=${receivedMessage.sender.id}'>${receivedMessage.sender.username}<a/></td>
+                    <td style="font-weight: ${unread ? 'bold' : 'normal' }"><a href='message?id=${receivedMessage.id}'>${fn:substring(message,0,26)}
                         <c:if test="${fn:length(message) > 30}">...</c:if></a></td>
                 </tr>
             </c:forEach>
@@ -37,7 +37,7 @@
     <div class='centralcolumn'>
         <div class='center'>
             <h1 class='center'>Your account</h1>
-            <form action='${pageContext.servletContext.contextPath}/home'>
+            <form action='home'>
                 <input type='submit' value='Homepage'/>
             </form>
             <br>
@@ -48,6 +48,7 @@
                 <input type='password' name='confirm' placeholder='confirm password' /><br><br>
                 <form:errors path='*' cssClass='error'/>
                 <p class='error'>${passwordsDontMatch}</p>
+                <p class='error'>${outcomeMessage}</p>
                 <br>
                 <input type='submit' value='Change details' />
             </form:form>
@@ -57,12 +58,12 @@
                 <tr>
                     <th>Created</th>
                     <th>Text</th>
-                    <th>&copy;</th>
+                    <th>Comments</th>
                 </tr>
                 <c:forEach items='${usersPosts}' var='post'>
                     <tr>
                         <td>${post.created}</td>
-                        <td><a href='${pageContext.servletContext.contextPath}/post?id=${post.id}'>${post.text}</a></td>
+                        <td><a href='post?id=${post.id}'>${post.text}</a></td>
                         <td>${fn:length(post.comments)}</td>
                     </tr>
                 </c:forEach>
@@ -81,8 +82,8 @@
                 <c:set var='message' value='${sentMessage.text}'/>
                 <tr>
                     <td>${sentMessage.created}</td>
-                    <td>${sentMessage.receiver.username}</td>
-                    <td><a href='${pageContext.servletContext.contextPath}/message?id=${sentMessage.id}'>${fn:substring(message,0,26)}
+                    <td><a href='user?id=${sentMessage.receiver.id}'>${sentMessage.receiver.username}</a></td>
+                    <td><a href='message?id=${sentMessage.id}'>${fn:substring(message,0,26)}
                         <c:if test='${fn:length(message) > 30}'>...</c:if></a></td>
                 </tr>
             </c:forEach>

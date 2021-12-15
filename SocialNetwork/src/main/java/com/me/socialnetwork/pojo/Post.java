@@ -40,7 +40,7 @@ public class Post {
     @JoinColumn
     private User user;
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "post", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "post", cascade = CascadeType.ALL)
     private List<Comment> comments = new ArrayList<Comment>();
 
     public String getText() {
